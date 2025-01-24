@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of order values in a given array of object corresponding to srno</title>
+</head>
+<body>
+    <script>
+        // const arr = [
+        //     {srNo: 1, order: 2},
+        //     {srNo: 2, order: 3},
+        //     {srNo: 1, order: 5},
+        //     {srNo: 2, order: 6}
+        // ]
+
+        // expected output = [
+        //     {srNo: 1, order: 7},
+        //     {srNo: 2, order: 9}
+        // ]
+
+        const arr = [
+            {srNo: 1, order: 2},
+            {srNo: 2, order: 3},
+            {srNo: 1, order: 5},
+            {srNo: 2, order: 6}
+        ]
+
+        const map = {}
+
+        for(let item of arr){
+            if(!map[item.srNo]){
+                map[item.srNo] = {srNo: item.srNo, order: 0};
+            }
+            map[item.srNo].order += item.order;
+        }
+
+        const result = Object.values(map); 
+        console.log(result);
+        
+    </script>
+</body>
+</html>
