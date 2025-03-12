@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combine array of objects</title>
+  </head>
+  <body>
+    <script>
+      //  Merge two array of objects so the end results has all keys, and inserts null where values are missing.
+
+      const a = [
+        { uuid: 1, role: "admin" },
+        { uuid: 2, role: "contributor" },
+        { uuid: 3, role: "owner" },
+        { uuid: 4, role: "contributor" },
+      ];
+
+      const b = [
+        { uuid: 2, name: "Darling" },
+        { uuid: 3, name: "Cry-Baby" },
+        { uuid: 4, name: "Snitch" },
+        { uuid: 5, name: "Pawn" },
+      ];
+
+    //   const output = [
+    //     { uuid: 1, name: null, role: "admin" },
+    //     { uuid: 2, name: "Darling", role: "contributor" },
+    //     { uuid: 3, name: "Cry-Baby", role: "owner" },
+    //     { uuid: 4, name: "Snitch", role: "contributor" },
+    //     { uuid: 5, name: "Pawn", role: null },
+    //   ];
+
+    const mergedMap = new Map();
+    console.log(mergedMap); 
+    
+    a.forEach(obj => mergedMap.set(obj.uuid, Object.assign({name: null}, obj)));
+    console.log(mergedMap);
+
+    b.forEach(obj => mergedMap.set(obj.uuid, Object.assign(mergedMap.get(obj.uuid) || {role: null}, obj)));
+    console.log(mergedMap);
+
+    // Convert Map back to an array
+    const output = Array.from(mergedMap.values());
+    console.log(output);
+    </script>
+  </body>
+</html>
