@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Group Anagram</title>
+  </head>
+  <body>
+    <script>
+      let strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
+      // Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+      const groupAnagram = (arr) => {
+        let anagramMap = new Map();
+
+        arr.map((str) => {
+          let sortedStr = str.split("").sort().join("");
+          if (!anagramMap.has(sortedStr)) {
+            anagramMap.set(sortedStr, []);
+          }
+          anagramMap.get(sortedStr).push(str);
+        });
+        return Array.from(anagramMap.values());
+      };
+
+      console.log(groupAnagram(strs));
+    </script>
+  </body>
+</html>
