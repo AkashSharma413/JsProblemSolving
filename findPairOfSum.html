@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Pair of Sum</title>
+  </head>
+  <body>
+    <script>
+      // Find the pair of numbers which sum is equal to 16
+
+      // let arr = [1,2,3,4,5,11,12,13,14,15];
+      // Output = [ [ 1, 15 ], [ 2, 14 ], [ 3, 13 ], [ 4, 12 ], [ 5, 11 ] ]
+
+      let arr = [1, 2, 3, 4, 5, 11, 12, 13, 14, 15];
+
+      const findPair = (arr, targetVal) => {
+        let output = [];
+        let l = arr.length;
+
+        for (let initialCounter = 0; initialCounter < l; initialCounter++) {
+          for (let i = initialCounter + 1; i < l; i++) {
+            if (arr[initialCounter] + arr[i] == targetVal) {
+              output.push([arr[initialCounter], arr[i]]);
+            }
+          }
+        }
+
+        return output;
+      };
+
+      console.log(findPair(arr, 16));
+    </script>
+  </body>
+</html>
