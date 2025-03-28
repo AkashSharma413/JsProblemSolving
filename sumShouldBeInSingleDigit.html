@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Sum of digits should be in single digit</title>
+</head>
+<body>
+    <script>
+        // Input = 54321 => 5 + 4 + 3 + 2 + 1 => 15 => 1 + 5 => 6
+        // Output = 6
+
+        const getSumInSingleDigit = (inputNum) => {
+            let arrayOfNum = ("" + inputNum).split("").map(val => parseInt(val))
+            let finalOutput = arrayOfNum.reduce((a, b) => a + b, 0)
+            
+            if(finalOutput > 10) {
+                getSumInSingleDigit(finalOutput)
+            } else{
+                console.log(finalOutput)
+            }
+        }
+
+        getSumInSingleDigit(54321)
+    </script>
+</body>
+</html>
